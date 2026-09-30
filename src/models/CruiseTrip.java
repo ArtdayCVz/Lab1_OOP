@@ -3,19 +3,38 @@ package models;
 import java.util.List;
 
 public class CruiseTrip extends Trip {
-    private String cabinType;
-    private boolean hasPool;
-    private List<String> portsOfCall;
 
-    public CruiseTrip(double price, int durationInDays, String waysOfTransportation, String food, String cabinType, boolean hasPool, List<String> portsOfCall) {
-        super(price, durationInDays, waysOfTransportation, food);
+    private final String cabinType;
+    private final boolean hasPool;
+    private final List<String> portsOfCall;
+
+    public CruiseTrip(Location departure, Location destination, double price,
+            int durationInDays, TransportType transportType, MealPlan mealPlan,
+            String cabinType, boolean hasPool, List<String> portsOfCall) {
+        super(departure, destination, price, durationInDays, transportType, mealPlan);
         this.cabinType = cabinType;
         this.hasPool = hasPool;
-        this.portsOfCall = portsOfCall;
+        this.portsOfCall = List.copyOf(portsOfCall);
     }
 
-    @Override 
+    public String getCabinType() {
+        return cabinType;
+    }
+
+    public boolean hasPool() {
+        return hasPool;
+    }
+
+    public List<String> getPortsOfCall() {
+        return portsOfCall;
+    }
+
+    @Override
     public String getTripInfo() {
-        return "Vacation: " + getDurationInDays() + " days, " + getPrice() + "$. Cabin: " + cabinType + ". Pool: " + hasPool + ". Route: " + portsOfCall;
+        return "Cruise: " + getDeparture() + " -> " + getDestination()
+                + ", " + getDurationInDays() + " days, " + getPrice() + "$"
+                + ", " + getMealPlan().getDisplayName()
+                + ". Cabin: " + cabinType + ". Pool: " + hasPool
+                + ". Route: " + portsOfCall;
     }
 }

@@ -21,4 +21,13 @@ public class TripManager {
             System.out.println(trip.getTripInfo());
         }
     }
+
+    public void printTripsCheaperThan(double maxPrice) {
+        System.out.println("Cheaper trips than: " + maxPrice + "$:");
+        for (Trip trip : trips) {
+            if (trip.getPrice() < maxPrice) {
+                System.out.println(trip.getTripInfo());
+            }
+        }
+    }
 }
