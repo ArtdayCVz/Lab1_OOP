@@ -30,11 +30,13 @@ public class CruiseTrip extends Trip {
     }
 
     @Override
-    public String getTripInfo() {
-        return "Cruise: " + getDeparture() + " -> " + getDestination()
-                + ", " + getDurationInDays() + " days, " + getPrice() + "$"
-                + ", " + getMealPlan().getDisplayName()
-                + ". Cabin: " + cabinType + ". Pool: " + hasPool
+    public TripType getType() {
+        return TripType.CRUISE;
+    }
+
+    @Override
+    protected String getDetails() {
+        return "Cabin: " + cabinType + ". Pool: " + hasPool
                 + ". Route: " + portsOfCall;
     }
 }

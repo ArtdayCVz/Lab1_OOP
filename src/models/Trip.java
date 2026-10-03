@@ -1,4 +1,8 @@
 package models;
+
+import java.util.Locale;
+import java.util.Objects;
+
 public abstract class Trip {
 
     private final Location departure;
@@ -23,15 +27,48 @@ public abstract class Trip {
         this.destination = destination;
         this.price = price;
         this.durationInDays = durationInDays;
-        this.transportType = transportType;
-        this.mealPlan = mealPlan;
+        this.transportType = Objects.requireNonNull(transportType,
+                "Transport type must not be null");
+        this.mealPlan = Objects.requireNonNull(mealPlan,
+                "Meal plan must not be null");
     }
-    public Location getDeparture(){return departure;}
-    public Location getDestination(){return destination;}
-    public double getPrice(){return price;}
-    public int getDurationInDays(){return durationInDays;}
-    public TransportType getTransportType(){return transportType;}
-    public MealPlan getMealPlan(){return mealPlan;}
 
-    public abstract String getTripInfo();
+    public Location getDeparture() {
+        return departure;
+    }
+
+    public Location getDestination() {
+        return destination;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getDurationInDays() {
+        return durationInDays;
+    }
+
+    public TransportType getTransportType() {
+        return transportType;
+    }
+
+    public MealPlan getMealPlan() {
+        return mealPlan;
+    }
+
+    public double getPricePerDay() {
+        return price / durationInDays;
+    }
+
+    public abstract TripType getType();
+
+    protected abstract String getDetails();
+
+    public String getTripInfo() {
+        return String.format(Locale.US, "%s: %s -> %s, %d days, %.2f$, %s, %s. %s",
+                getType().getDisplayName(), departure, destination,
+                durationInDays, price, transportType.getDisplayName(),
+                mealPlan.getDisplayName(), getDetails());
+    }
 }

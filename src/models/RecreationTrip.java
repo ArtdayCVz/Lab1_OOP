@@ -16,11 +16,12 @@ public class RecreationTrip extends Trip {
     }
 
     @Override
-    public String getTripInfo() {
-        return "Recreation: " + getDeparture() + " -> " + getDestination()
-                + ", " + getDurationInDays() + " days, " + getPrice() + "$"
-                + ", " + getTransportType().getDisplayName()
-                + ", " + getMealPlan().getDisplayName()
-                + ". Pool: " + hasPool;
+    public TripType getType() {
+        return TripType.RECREATION;
+    }
+
+    @Override
+    protected String getDetails() {
+        return "Pool: " + hasPool;
     }
 }
