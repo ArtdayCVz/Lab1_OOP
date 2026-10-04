@@ -1,8 +1,8 @@
-package services;
+package main.services;
 
 import java.util.Comparator;
 
-import models.Trip;
+import main.models.Trip;
 
 public enum TripSortOption {
     PRICE_ASC(Comparator.comparingDouble(Trip::getPrice)),

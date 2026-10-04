@@ -1,4 +1,4 @@
-package models;
+package main.models;
 
 public enum MealPlan {
     NONE("No meals"),

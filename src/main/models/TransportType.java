@@ -1,4 +1,4 @@
-package models;
+package main.models;
 
 public enum TransportType {
     PLANE("Plane"),

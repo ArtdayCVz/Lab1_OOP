@@ -1,17 +1,17 @@
-package app;
+package main.app;
 
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import models.MealPlan;
-import models.TransportType;
-import models.Trip;
-import models.TripType;
-import services.TripFilter;
-import services.TripManager;
-import services.TripSortOption;
+import main.services.TripFilter;
+import main.services.TripManager;
+import main.services.TripSortOption;
+import main.models.MealPlan;
+import main.models.TransportType;
+import main.models.Trip;
+import main.models.TripType;
 
 public class ConsoleMenu {
 

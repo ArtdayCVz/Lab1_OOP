@@ -1,17 +1,17 @@
-package app;
+package main.app;
 
 import java.util.List;
 import java.util.Scanner;
 
-import models.CruiseTrip;
-import models.ExcursionTrip;
-import models.Location;
-import models.MealPlan;
-import models.RecreationTrip;
-import models.ShoppingTrip;
-import models.TransportType;
-import models.TreatmentTrip;
-import services.TripManager;
+import main.models.CruiseTrip;
+import main.models.ExcursionTrip;
+import main.models.Location;
+import main.models.MealPlan;
+import main.models.RecreationTrip;
+import main.models.ShoppingTrip;
+import main.models.TransportType;
+import main.models.TreatmentTrip;
+import main.services.TripManager;
 
 public class Main {
 
