@@ -8,16 +8,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import models.CruiseTrip;
-import models.ExcursionTrip;
-import models.Location;
-import models.MealPlan;
-import models.RecreationTrip;
-import models.ShoppingTrip;
-import models.TransportType;
-import models.TreatmentTrip;
-import models.TripType;
-
 class TripTest {
 
     private static final Location FROM = new Location("Kyiv", "Ukraine");

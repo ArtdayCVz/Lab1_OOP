@@ -12,7 +12,6 @@ import models.RecreationTrip;
 import models.ShoppingTrip;
 import models.TransportType;
 import models.Trip;
-import services.TripSortOption;
 
 import org.junit.jupiter.api.Test;
 

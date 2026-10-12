@@ -8,7 +8,6 @@ import java.io.PrintStream;
 import java.util.List;
 import java.util.Scanner;
 
-import app.ConsoleMenu;
 import models.CruiseTrip;
 import models.Location;
 import models.MealPlan;

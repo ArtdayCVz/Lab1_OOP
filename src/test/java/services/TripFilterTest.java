@@ -10,7 +10,6 @@ import models.RecreationTrip;
 import models.TransportType;
 import models.Trip;
 import models.TripType;
-import services.TripFilter;
 
 import org.junit.jupiter.api.Test;
 

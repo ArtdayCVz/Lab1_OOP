@@ -11,9 +11,6 @@ import java.util.List;
 
 import models.Trip;
 import models.TripType;
-import services.TripFilter;
-import services.TripManager;
-import services.TripSortOption;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
