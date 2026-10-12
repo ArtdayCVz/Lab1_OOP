@@ -1,4 +1,4 @@
-package test.models;
+package models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -6,17 +6,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
-import main.models.CruiseTrip;
-import main.models.ExcursionTrip;
-import main.models.Location;
-import main.models.MealPlan;
-import main.models.RecreationTrip;
-import main.models.ShoppingTrip;
-import main.models.TransportType;
-import main.models.TreatmentTrip;
-import main.models.TripType;
-
 import org.junit.jupiter.api.Test;
+
+import models.CruiseTrip;
+import models.ExcursionTrip;
+import models.Location;
+import models.MealPlan;
+import models.RecreationTrip;
+import models.ShoppingTrip;
+import models.TransportType;
+import models.TreatmentTrip;
+import models.TripType;
 
 class TripTest {
 

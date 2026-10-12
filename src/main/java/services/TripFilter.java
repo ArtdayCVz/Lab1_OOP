@@ -1,12 +1,12 @@
-package main.services;
+package services;
 
 import java.util.EnumSet;
 import java.util.Set;
 
-import main.models.MealPlan;
-import main.models.TransportType;
-import main.models.Trip;
-import main.models.TripType;
+import models.MealPlan;
+import models.TransportType;
+import models.Trip;
+import models.TripType;
 
 public final class TripFilter {
 

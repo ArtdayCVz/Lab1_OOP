@@ -1,4 +1,4 @@
-package test.app;
+package app;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -8,16 +8,17 @@ import java.io.PrintStream;
 import java.util.List;
 import java.util.Scanner;
 
-import main.app.ConsoleMenu;
-import main.models.CruiseTrip;
-import main.models.Location;
-import main.models.MealPlan;
-import main.models.RecreationTrip;
-import main.models.ShoppingTrip;
-import main.models.TransportType;
+import app.ConsoleMenu;
+import models.CruiseTrip;
+import models.Location;
+import models.MealPlan;
+import models.RecreationTrip;
+import models.ShoppingTrip;
+import models.TransportType;
+import services.TripManager;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import main.services.TripManager;
 
 class ConsoleMenuTest {
 

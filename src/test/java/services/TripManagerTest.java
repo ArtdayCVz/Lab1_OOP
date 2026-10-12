@@ -1,4 +1,4 @@
-package test.services;
+package services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -9,12 +9,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
 
-import main.models.Trip;
-import main.models.TripType;
-import main.services.TripFilter;
-import main.services.TripManager;
+import models.Trip;
+import models.TripType;
+import services.TripFilter;
+import services.TripManager;
+import services.TripSortOption;
 
-import main.services.TripSortOption;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

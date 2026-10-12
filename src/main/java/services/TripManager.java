@@ -1,11 +1,11 @@
-package main.services;
+package services;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import main.models.Trip;
+import models.Trip;
 
 public class TripManager {
 

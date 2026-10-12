@@ -1,16 +1,16 @@
-package test.services;
+package services;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import main.models.Location;
-import main.models.MealPlan;
-import main.models.RecreationTrip;
-import main.models.TransportType;
-import main.models.Trip;
-import main.models.TripType;
-import main.services.TripFilter;
+import models.Location;
+import models.MealPlan;
+import models.RecreationTrip;
+import models.TransportType;
+import models.Trip;
+import models.TripType;
+import services.TripFilter;
 
 import org.junit.jupiter.api.Test;
 

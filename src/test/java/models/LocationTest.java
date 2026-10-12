@@ -1,11 +1,12 @@
-package test.models;
+package models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import main.models.Location;
 import org.junit.jupiter.api.Test;
+
+import models.Location;
 
 class LocationTest {
 

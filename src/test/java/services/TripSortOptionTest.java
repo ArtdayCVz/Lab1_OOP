@@ -1,18 +1,18 @@
-package test.services;
+package services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.models.CruiseTrip;
-import main.models.Location;
-import main.models.MealPlan;
-import main.models.RecreationTrip;
-import main.models.ShoppingTrip;
-import main.models.TransportType;
-import main.models.Trip;
-import main.services.TripSortOption;
+import models.CruiseTrip;
+import models.Location;
+import models.MealPlan;
+import models.RecreationTrip;
+import models.ShoppingTrip;
+import models.TransportType;
+import models.Trip;
+import services.TripSortOption;
 
 import org.junit.jupiter.api.Test;
 
