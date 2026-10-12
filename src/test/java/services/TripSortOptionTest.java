@@ -1,6 +1,11 @@
 package services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,5 +50,31 @@ class TripSortOptionTest {
         // enum order: RECREATION, EXCURSION, TREATMENT, SHOPPING, CRUISE
         assertEquals(List.of(beachCheap, beachPricey, shopping, cruise),
                 sorted(TripSortOption.TYPE_THEN_PRICE));
+    }
+
+    @Test
+    void priceComparatorReadsOnlyPrice() {
+        Trip cheap = mock(Trip.class);
+        Trip pricey = mock(Trip.class);
+        when(cheap.getPrice()).thenReturn(100.0);
+        when(pricey.getPrice()).thenReturn(900.0);
+
+        assertTrue(TripSortOption.PRICE_ASC.getComparator().compare(cheap, pricey) < 0);
+        verify(cheap).getPrice();
+        verify(cheap, never()).getDurationInDays();
+        verify(cheap, never()).getPricePerDay();
+    }
+
+    @Test
+    void pricePerDayComparatorUsesPricePerDay() {
+        Trip perDayLow = mock(Trip.class);
+        Trip perDayHigh = mock(Trip.class);
+        when(perDayLow.getPricePerDay()).thenReturn(50.0);
+        when(perDayHigh.getPricePerDay()).thenReturn(200.0);
+
+        assertTrue(TripSortOption.PRICE_PER_DAY.getComparator()
+                .compare(perDayHigh, perDayLow) > 0);
+        verify(perDayLow).getPricePerDay();
+        verify(perDayLow, never()).getPrice();
     }
 }

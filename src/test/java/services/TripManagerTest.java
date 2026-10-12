@@ -2,7 +2,10 @@ package services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.ByteArrayOutputStream;
@@ -102,5 +105,41 @@ class TripManagerTest {
         String text = out.toString();
         assertEquals(true, text.contains("List of trips:"));
         assertEquals(true, text.contains("A") && text.contains("B") && text.contains("C"));
+    }
+
+    @Test
+    void filterAsksFilterAboutEveryTrip() {
+        TripFilter mockFilter = mock(TripFilter.class);
+        when(mockFilter.matches(cheapShort)).thenReturn(true);
+
+        assertEquals(List.of(cheapShort), manager.filter(mockFilter));
+        verify(mockFilter, times(3)).matches(any(Trip.class));
+    }
+
+    @Test
+    void findTripsUsesGivenFilterExactlyOncePerTrip() {
+        TripFilter mockFilter = mock(TripFilter.class);
+        when(mockFilter.matches(any(Trip.class))).thenReturn(true);
+
+        List<Trip> result = manager.findTrips(mockFilter, TripSortOption.PRICE_ASC);
+
+        assertEquals(List.of(cheapShort, midLong, expensive), result);
+        verify(mockFilter).matches(expensive);
+        verify(mockFilter).matches(cheapShort);
+        verify(mockFilter).matches(midLong);
+    }
+
+    @Test
+    void printAllTripsReadsInfoOfEveryTrip() {
+        PrintStream original = System.out;
+        System.setOut(new PrintStream(new ByteArrayOutputStream()));
+        try {
+            manager.printAllTrips();
+        } finally {
+            System.setOut(original);
+        }
+        verify(expensive).getTripInfo();
+        verify(cheapShort).getTripInfo();
+        verify(midLong).getTripInfo();
     }
 }

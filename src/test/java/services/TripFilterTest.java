@@ -3,6 +3,11 @@ package services;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.when;
 
 import models.Location;
 import models.MealPlan;
@@ -57,5 +62,46 @@ class TripFilterTest {
                 () -> TripFilter.builder().minPrice(10).maxPrice(5).build());
         assertThrows(IllegalArgumentException.class,
                 () -> TripFilter.builder().minDays(5).maxDays(2).build());
+    }
+
+    @Test
+    void emptyFilterDoesNotInspectTrip() {
+        Trip mockTrip = mock(Trip.class);
+
+        assertTrue(TripFilter.builder().build().matches(mockTrip));
+        verifyNoInteractions(mockTrip);
+    }
+
+    @Test
+    void stopsCheckingAfterFirstFailedCriterion() {
+        Trip mockTrip = mock(Trip.class);
+        when(mockTrip.getPrice()).thenReturn(100.0);
+
+        assertFalse(TripFilter.builder().minPrice(500).minDays(3).build().matches(mockTrip));
+        verify(mockTrip).getPrice();
+        verify(mockTrip, never()).getDurationInDays();
+    }
+
+    @Test
+    void matchesMockedTripByAllCriteria() {
+        Trip mockTrip = mock(Trip.class);
+        when(mockTrip.getPrice()).thenReturn(300.0);
+        when(mockTrip.getDurationInDays()).thenReturn(5);
+        when(mockTrip.getType()).thenReturn(TripType.SHOPPING);
+        when(mockTrip.getTransportType()).thenReturn(TransportType.BUS);
+        when(mockTrip.getMealPlan()).thenReturn(MealPlan.NONE);
+        when(mockTrip.getDestination()).thenReturn(new Location("Warsaw", "Poland"));
+
+        TripFilter filter = TripFilter.builder()
+                .minPrice(200).maxPrice(400)
+                .minDays(3).maxDays(7)
+                .type(TripType.SHOPPING)
+                .transport(TransportType.BUS)
+                .mealPlan(MealPlan.NONE)
+                .country("poland")
+                .build();
+
+        assertTrue(filter.matches(mockTrip));
+        verify(mockTrip).getDestination();
     }
 }
